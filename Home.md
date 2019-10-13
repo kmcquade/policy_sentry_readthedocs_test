@@ -7,7 +7,7 @@ Please note that the wiki documentation is a work in progress.
 ## Navigating the Wiki
 
 ### Pre-requisite knowledge
-  * [IAM Policies](IAM_Policies). This covers (1) Elements of an IAM Policy and (2) Breakdown of the tables for Actions, Resources, and Condition keys per service
+  * [IAM Policies](IAM-Policies). This covers (1) Elements of an IAM Policy and (2) Breakdown of the tables for Actions, Resources, and Condition keys per service
   * [Minimization](Minimization). This covers our method for reducing the size of IAM policies generated using our tool in an attempt to meet IAM Policy Character limit restrictions.
 
 ### Getting Started as a User
