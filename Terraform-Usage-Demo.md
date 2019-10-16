@@ -1,4 +1,4 @@
-Please download the demo code [here](https://github.com/salesforce/policy_sentry/examples/terraform) to follow along.
+Please download the demo code [here](https://github.com/salesforce/policy_sentry/tree/master/examples/terraform) to follow along.
 
 ## Prerequisites
 
