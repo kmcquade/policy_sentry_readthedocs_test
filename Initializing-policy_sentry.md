@@ -6,7 +6,7 @@ The database is generated based on the HTML files stored in the `policy_sentry/s
 
 ### Options
 
-* `--access-level-overrides-file`: Path to your own custom access level overrides file, used to override the Access Levels per action provided by AWS docs. The default one is [here](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/data/access-level-overrides.yml).
+* `--access-level-overrides-file` (Optional): Path to your own custom access level overrides file, used to override the Access Levels per action provided by AWS docs. The default one is [here](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/data/access-level-overrides.yml).
 
 ### Usage
 
