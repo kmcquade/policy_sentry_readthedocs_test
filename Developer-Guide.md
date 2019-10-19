@@ -112,6 +112,13 @@ test_actions_missing_description: write-policy when the YAML file is missing a d
 test_actions_missing_name: write-policy when the YAML file is missing a name? ... ok
 ```
 
+### Random
+
+* Code counting: Use [tokei](https://github.com/XAMPPRocky/tokei#how-to-use-tokei)
+
+```
+tokei ./* --exclude --exclude '**/*.html' --exclude '**/*.json'
+```
 
 [1]: https://click.palletsprojects.com/en/7.x/#documentation
 [2]: https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html
