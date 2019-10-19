@@ -14,5 +14,5 @@
 * [**Developer Guide**](Developer-Guide)
 * **Other**
   * [Limitations](Limitations)
-* **FAQ**
+### [FAQ](FAQ)
   * [Comparison to other tools](Comparison-to-other-tools)
