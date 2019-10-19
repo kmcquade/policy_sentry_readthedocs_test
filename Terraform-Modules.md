@@ -5,7 +5,7 @@
 * Install policy_sentry
 
 ```bash
-pip3 install --user git+https://github.com/salesforce/policy_sentry.git#egg=policy_sentry
+pip3 install policy_sentry
 ```
 
 * Initialize policy_sentry

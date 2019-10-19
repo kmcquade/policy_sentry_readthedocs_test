@@ -2,6 +2,13 @@
 
 Before reading this, make sure you have read all the other documentation - especially the [IAM Policies document](IAM_Policies), which covers the Action Tables, ARN tables, and Condition Keys Tables.
 
+Other assumptions:
+* You are familiar with these Python things:
+  - [click](1)
+  - package imports, multi folder management
+  - PyPi
+  - Unit testing
+
 ### Overall: How policy_sentry uses these tables
 
 policy_sentry follows this process for generating policies.
@@ -24,7 +31,32 @@ policy_sentry follows this process for generating policies.
 
 ### Project Structure
 
-Fill this in later.
+We'll focus mostly on the intent and approach of the major files (and subfolders) within the `policy_sentry/shared` directory:
+
+#### Subfolders
+
+* `data/audit/*.txt`: These text files are the pre-bundled audit files that you can use with the `analyze-iam-policy` command. Currently they are limited to privilege escalation and resource exposure. For more information, see the page on [Analyzing IAM Policies](Analyzing-IAM-Policies).
+* `data/docs/*.html`: These are HTML files wget'd from the [Actions, Resources, and Condition Keys](2) AWS documentation. This is used to build our database.
+* `data/access-level-overrides.yml`: This is created to override the access levels that AWS incorrectly states in their documentation. For instance, quite often, their service teams will say that an IAM action is "Tagging" when it really should be "Write" - for example, `secretsmanager:CreateSecret`.
+
+#### Files
+
+> TODO: Insert brief explanations of strategy for some of these later. It will just help people as they try to figure out this project.
+
+* [actions.py](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/actions.py)
+* [analyze.py](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/analyze.py)
+* [arns.py](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/arns.py)
+* [conditions.py](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/conditions.py)
+* [config.py](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/config.py)
+* [database.py](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/database.py)
+* [download.py](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/download.py)
+* [file.py](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/file.py)
+* [links.yml](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/)
+* [login.py](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/login.py)
+* [minimize.py](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/minimize.py)
+* [roles.py](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/roles.py)
+* [scrape.py](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/scrape.py)
+* [template.py](https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/template.py)
 
 ## Development
 
@@ -51,6 +83,9 @@ nosetests -v
 Output:
 
 ```text
+Tests the format of the overrides yml file for the RAM service ... ok
+Tests iam:CreateAccessKey (in overrides file as Permissions management, but in the AWS docs as Write) ... ok
+test_get_actions_by_access_level (test_actions.ActionsTestCase) ... ok
 test_get_dependent_actions_double (test_actions.ActionsTestCase) ... ok
 test_get_dependent_actions_several (test_actions.ActionsTestCase) ... ok
 test_get_dependent_actions_single (test_actions.ActionsTestCase) ... ok
@@ -63,11 +98,20 @@ test_does_arn_match_case_4 (test_arns.ArnsTestCase) ... ok
 test_does_arn_match_case_5 (test_arns.ArnsTestCase) ... ok
 test_does_arn_match_case_6 (test_arns.ArnsTestCase) ... ok
 test_does_arn_match_case_bucket (test_arns.ArnsTestCase) ... ok
+test_determine_actions_to_expand: provide expanded list of actions, like ecr:* ... ok
+test_minimize_statement_actions (test_minimize_wildcard_actions.MinimizeWildcardActionsTestCase) ... ok
+test_actions_template (test_template.TemplateTestCase) ... ok
+test_crud_template (test_template.TemplateTestCase) ... ok
 test_print_policy_with_actions_having_dependencies (test_write_policy.WritePolicyActionsTestCase) ... ok
 test_write_policy (test_write_policy.WritePolicyCrudTestCase) ... ok
-
-----------------------------------------------------------------------
-Ran 14 tests in 1.138s
-
-OK
+test_actions_missing_actions: write-policy actions if the actions block is missing ... ok
+test_allow_missing_access_level_categories_in_cfg: write-policy --crud when the YAML file is missing access level categories ... ok
+test_allow_empty_access_level_categories_in_cfg: If the content of a list is an empty string, it should sysexit ... ok
+test_actions_missing_arn: write-policy actions command when YAML file block is missing an ARN ... ok
+test_actions_missing_description: write-policy when the YAML file is missing a description ... ok
+test_actions_missing_name: write-policy when the YAML file is missing a name? ... ok
 ```
+
+
+[1]: https://click.palletsprojects.com/en/7.x/#documentation
+[2]: https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html

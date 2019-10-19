@@ -6,6 +6,7 @@
   * [Initialization](Initializing-policy_sentry)
   * [Write Policies with ARNs and Access Levels](Writing-IAM-Policies-with-Resource-ARNs-and-Access-Levels)
   * [Write Policies with a List of Actions](Writing-IAM-Policies-with-a-List-of-Actions)
+  * [Downloading Policies](Downloading-Policies)
   * [Analyzing IAM Policies](Analyzing-IAM-Policies)
 * **Terraform and policy_sentry**
   * [Demo: Terraform and policy_sentry](Terraform-Usage-Demo)

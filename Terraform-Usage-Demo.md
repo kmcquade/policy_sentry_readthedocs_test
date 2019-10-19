@@ -1,5 +1,21 @@
 Please download the demo code [here](https://github.com/salesforce/policy_sentry/tree/master/examples/terraform) to follow along.
 
+## Command options
+
+```
+Usage: policy_sentry write-policy-dir [OPTIONS]
+
+  write_policy, but this time with an input directory of YML/YAML files, and
+  an output directory for all the JSON files
+
+Options:
+  --input-dir TEXT    Relative path to Input directory that contains policy_sentry .yml files (CRUD mode only)  [required]
+  --output-dir TEXT   Relative path to directory to store AWS JSON policies [required]
+  --crud              Use the CRUD functionality. Defaults to false
+  --minimize INTEGER  Minimize the resulting statement with *safe* usage of wildcards to reduce policy length. Set this to the character length you want - for example, 4
+  --help              Show this message and exit.
+```
+
 ## Prerequisites
 
 This requires:

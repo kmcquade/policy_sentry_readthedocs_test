@@ -5,14 +5,14 @@ YAML File. The policy will be generated for you. You might need to fiddle with t
 
 ## Command options
 
-* `--crud`: Specify this option to use the CRUD functionality. File must be formatted as expected.
-* `--file`: YAML file containing the CRUD levels + Resource ARNs
+* `--crud`: Specify this option to use the CRUD functionality. File must be formatted as expected. Defaults to false.
+* `--input-file`: YAML file containing the CRUD levels + Resource ARNs. Required.
 * `--minimize`: Whether or not to minimize the resulting statement with *safe* usage of wildcards to reduce policy length. Set this to the character length you want. This can be extended for readability. I suggest setting it to `0`.
 
 Example:
 
 ```bash
-policy_sentry write-policy --crud --file examples/crud.yml
+policy_sentry write-policy --crud --input-file examples/crud.yml
 ```
 
 ## Instructions
@@ -50,7 +50,7 @@ roles_with_crud_levels:
 * Run the command:
 
 ```bash
-policy_sentry write-policy --crud --file examples/crud.yml
+policy_sentry write-policy --crud --input-file examples/crud.yml
 ```
 
 * It will generate an IAM Policy containing an IAM policy with the actions restricted to the ARNs specified above.

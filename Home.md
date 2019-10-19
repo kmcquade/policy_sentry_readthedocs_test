@@ -15,6 +15,7 @@ Please note that the wiki documentation is a work in progress.
   * [Initialization](Initializing-policy_sentry): How to initialize policy_sentry. This creates the SQLite database stored in the `$HOME/.policy_sentry/` directory, which is required for using this tool.
   * [Write Policies with Resource ARNs and Access Levels](Writing-IAM-Policies-with-Resource-ARNs-and-Access-Levels)
   * [Write Policies with a List of Actions](Writing-IAM-Policies-with-a-List-of-Actions)
+  * [Downloading Policies](Downloading-Policies)
   * [Analyzing IAM Policies](Analyzing-IAM-Policies)
 
 ### Creating Policies with Terraform and policy_sentry

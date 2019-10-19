@@ -2,12 +2,12 @@ Supply a list of actions in a YAML file and generate the policy accordingly.
 
 ## Command options
 
-* `--file`: YAML file containing the list of actions
+* `--input-file`: YAML file containing the list of actions
 * `--minimize`: Whether or not to minimize the resulting statement with *safe* usage of wildcards to reduce policy length. Set this to the character lengh you want - for example, 4
 
 Example:
 ```bash
-policy_sentry write-policy --file examples/actions.yml
+policy_sentry write-policy --input-file examples/actions.yml
 ```
 
 ## Instructions
@@ -29,7 +29,7 @@ roles_with_actions:
 * Then run this in command line:
 
 ```bash
-policy_sentry write-policy --file examples/actions.yml
+policy_sentry write-policy --input-file examples/actions.yml
 ```
 
 * The output will look like this:

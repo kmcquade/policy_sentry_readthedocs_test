@@ -1,12 +1,12 @@
 ## Quickstart
 
-* `policy_sentry` is available via pip. To install, run:
+* `policy_sentry` is available via pip (Python 3 only). To install, run:
 
 ```bash
 pip install --user policy_sentry
 ```
 
-* Command cheat sheet
+* Policy Writing cheat sheet
 
 ```bash
 # Initialize the policy_sentry config folder and create the IAM database tables.
@@ -26,18 +26,44 @@ policy_sentry create-template --name myRole --output-file tmp.yml --template-typ
 
 # Write policy based on a list of actions
 policy_sentry write-policy --file examples/actions.yml
+```
 
-# Analyze an IAM policy to identify actions with specific access levels
-policy_sentry analyze-iam-policy --show permissions-management --file examples/analyze/wildcards.json
+* Policy Analysis Cheat Sheet
 
-# Analyze an IAM policy to identify higher-risk IAM calls
-policy_sentry analyze-iam-policy --file examples/analyze/wildcards.json
+```bash
+# Initialize the policy_sentry config folder and create the IAM database tables.
+policy_sentry initialize
+
+# Download customer-managed IAM policies from existing accounts to $HOME/.policy_sentry/policy-analysis/accountnum/customer-managed
+policy_sentry download-policies --profile dev
+
+# Download customer-managed IAM policies, including those that are not attached
+# These will download to ~/.policy_sentry/accountid/customer-managed/.json
+policy_sentry download-policies --profile dev --include-unattached 
+
+# Download AWS-managed IAM policies
+# These will download to $HOME/.policy_sentry/policy-analysis/accountnum/aws-managed
+policy_sentry download-policies --profile dev --aws-managed
+
+# Analyze an IAM policy **file** to identify higher-risk IAM calls
+policy_sentry analyze-iam-policy --policy examples/analyze/wildcards.json
+
+# Analyze an IAM policy **file** to identify actions with specific access levels
+policy_sentry analyze-iam-policy --policy examples/analyze/wildcards.json--from-access-level permissions-management 
+
+# Run analysis on an entire **directory** of IAM policies to identify actions with specific access levels
+policy_sentry analyze-iam-policy --policy $HOME/.policy_sentry/policy-analysis/0123456789012/customer-managed --from-access-level permissions-management
+
+# Analyze an IAM policy **file** that contain actions from pre-bundled list of action risk types (privilege escalation, resource exposure)
+policy_sentry analyze-iam-policy --policy examples/analyze/wildcards.json --from-audit-file ~/.policy_sentry/audit/privilege-escalation.txt
 ```
 
 ## Commands
 
 ### Usage
 * `initialize`: Create a SQLite database that contains all of the services available through the [Actions, Resources, and Condition Keys documentation][1]. See the [documentation][12].
+
+* `download-policies`: Download IAM policies from an AWS account locally for analysis against the database.
 
 * `create-template`: Creates the YML file templates for use in the `write-policy` command types.
 
