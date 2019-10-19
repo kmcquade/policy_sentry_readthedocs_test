@@ -9,7 +9,7 @@
 
 ### Motivation
 
-Let's say you're from the PCS team or the PCSK team. 
+Let's say you are a developer that handles creation of IAM policies.
 * A requestor asks you to create an IAM policy. 
 * You haven't been tasked with auditing IAM policies yourself, as that's not your area of expertise, and until this point there is no automation to do it for you.
 * However, you want to make sure that the requestors aren't asking for permissions that they don't need, since we need to have *some* guardrails in place to prevent unnecessary exposure of attack surfaces.
