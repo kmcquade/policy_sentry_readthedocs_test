@@ -3,9 +3,10 @@
 
 ### Options
 
-* `--file`: Supply the requestors IAM policy as a JSON file.
-* `--print-policy`: Print the example policy where actions are restricted to ARNs. Defaults to false.
-* `--audit-file`: The list of AWS actions to audit. Defaults to `$HOME/.policy_sentry/audit/permissions-access-level.txt`
+
+* `--policy` (required): Supply the requestors IAM policy as a JSON file. Accepts relative path.
+* `--from-audit-file`: The list of AWS actions to audit. Defaults to `$HOME/.policy_sentry/audit/permissions-access-level.txt`
+* `--from-access level`:  Show CRUD levels. Acceptable values are `read`, `write`, `list`, `tagging`, `permissions-management`
 
 ### Motivation
 
