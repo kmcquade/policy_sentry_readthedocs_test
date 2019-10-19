@@ -27,3 +27,13 @@ Please note that the wiki documentation is a work in progress.
 
 ### Other
 * [Limitations](Limitations): Identifies some services that are currently missing
+
+### [FAQ](FAQ)
+* [Comparison to other tools](Comparison-to-other-tools)
+
+## Author
+
+* Kinnaird McQuade
+  - [Twitter](https://twitter.com/kmcquade3)
+  - [Keybase](https://keybase.io/kmcquade)
+  - [LinkedIn](https://www.linkedin.com/in/kinnairdmcquade/)
