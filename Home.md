@@ -37,3 +37,8 @@ Please note that the wiki documentation is a work in progress.
   - [Twitter](https://twitter.com/kmcquade3)
   - [Keybase](https://keybase.io/kmcquade)
   - [LinkedIn](https://www.linkedin.com/in/kinnairdmcquade/)
+
+* Matt Jones
+  - [Twitter](https://twitter.com/CaffeinatedEng)
+  - [Keybase](https://keybase.io/urlugal)
+  - [LinkedIn](https://www.linkedin.com/in/mattyjones/)
