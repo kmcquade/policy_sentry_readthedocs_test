@@ -40,7 +40,8 @@ Please note that the wiki documentation is a work in progress.
 
 ## Contributors
 
-* Matt Jones
+* [Matt Jones](https://github.com/mattyjones)
   - [Twitter](https://twitter.com/CaffeinatedEng)
   - [Keybase](https://keybase.io/urlugal)
   - [LinkedIn](https://www.linkedin.com/in/mattyjones/)
+ 
