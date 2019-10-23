@@ -38,6 +38,8 @@ Please note that the wiki documentation is a work in progress.
   - [Keybase](https://keybase.io/kmcquade)
   - [LinkedIn](https://www.linkedin.com/in/kinnairdmcquade/)
 
+## Contributors
+
 * Matt Jones
   - [Twitter](https://twitter.com/CaffeinatedEng)
   - [Keybase](https://keybase.io/urlugal)
