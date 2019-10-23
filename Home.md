@@ -33,7 +33,7 @@ Please note that the wiki documentation is a work in progress.
 
 ## Author
 
-* Kinnaird McQuade
+* [Kinnaird McQuade](https://github.com/kmcquade)
   - [Twitter](https://twitter.com/kmcquade3)
   - [Keybase](https://keybase.io/kmcquade)
   - [LinkedIn](https://www.linkedin.com/in/kinnairdmcquade/)
