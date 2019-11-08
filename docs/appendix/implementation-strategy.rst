@@ -17,6 +17,6 @@ In the context of your overall organization strategy for AWS IAM, we recommend u
 
 #. Never provision infrastructure manually; use Infrastructure as Code 
 
-   * I highly suggest Terraform for IAC over other alternatives such as CloudFormation, Chef, or Puppet. See the Gruntwork blog post [here][6]; Yevgeniy Brikman explains the reasons very well.
+   * I highly suggest Terraform for IAC over other alternatives such as CloudFormation, Chef, or Puppet. Yevgeniy Brikman explains the reasons very well in `this Gruntwork.io blog post <https://blog.gruntwork.io/why-we-use-terraform-and-not-chef-puppet-ansible-saltstack-or-cloudformation-7989dad2865c>`_.
    * I also suggest reading HashiCorp's `Unlocking the Cloud Operating Model Whitepaper <https://www.hashicorp.com/cloud-operating-model>`_.
 
