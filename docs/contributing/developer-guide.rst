@@ -77,12 +77,6 @@ Files
 * `template.py <https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/template.py>`_
 
 
-Development
------------
-
-Install dependencies using pipenv.
-
-
 Pipenv
 ~~~~~~
 

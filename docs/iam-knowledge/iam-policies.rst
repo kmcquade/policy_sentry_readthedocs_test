@@ -20,7 +20,7 @@ The following IAM JSON Policy elements are included in policy_sentry-generated I
   * `SID <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_sid.html>`_\ : Statement ID. Optional identifier for the policy statement. SID values can be assigned to each statement in a statement array. 
   * `Effect <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_effect.html>`_\ : ``Allow`` or explicit ``Deny``. If there is any overlap on an action or actions with Allow vs. Deny, the ``Deny`` effect overrides the ``Allow``. 
   * `Action <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_action.html>`_\ : This refers to the IAM action - i.e., ``s3:GetObject``\ , or ``ec2:DescribeInstances``. Action text in a statement can have wildcards included: for example, ``ec2:*`` covers all EC2 actions, and ``ec2:Describe*`` covers all EC2 actions prefixed with ``Describe`` - such as ``DescribeInstances``\ , ``DescribeInstanceAttributes``\ , etc.
-  * `Resource <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_resource.html>`_\ : This refers to an Amazon Resource Name (ARN) that the Action can be performed against. There are differences in ARN format per service. Those differences can be viewed `here <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html>`_ 
+  * `Resource <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_resource.html>`_\ : This refers to an Amazon Resource Name (ARN) that the Action can be performed against. There are differences in ARN format per service. Those differences can be viewed `in the AWS Docs on ARNs and Namespaces <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html>`_
 
 The ones we don't use in this tool:
 
@@ -44,7 +44,7 @@ This documentation is the seed source for the database that we create in policy_
 Action Table
 ^^^^^^^^^^^^
 
-Consider the Action table snippet from KMS shown below (source documentation can be viewed `here <https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awskeymanagementservice.html#awskeymanagementservice-actions-as-permissions>`_\ ).
+Consider the Action table snippet from KMS shown below (source documentation can be viewed `on the KMS documentation here <https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awskeymanagementservice.html#awskeymanagementservice-actions-as-permissions>`_\ ).
 
 
 
@@ -80,7 +80,7 @@ As you can see, the Actions Table contains these columns:
 ARN Table
 ^^^^^^^^^
 
-Consider the KMS ARN Table shown below (the source documentation can be viewed `here <https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awskeymanagementservice.html#awskeymanagementservice-resources-for-iam-policies>`_. 
+Consider the KMS ARN Table shown below (the source documentation can be viewed `on the AWS website here <https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awskeymanagementservice.html#awskeymanagementservice-resources-for-iam-policies>`_.
 
 +--------------------+---------------------------------------------------------------+--------------------+
 | **Resource Types** | **ARN**                                                       | **Condition Keys** |
