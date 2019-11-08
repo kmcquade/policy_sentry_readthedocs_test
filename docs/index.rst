@@ -1,4 +1,4 @@
-Welcome to policy_sentry_readthedocs_test's documentation!
+Policy Sentry Documentation
 ==========================================================
 
 Policy Sentry is an AWS IAM Least Privilege Policy Generator, auditor, and analysis database.
@@ -27,11 +27,11 @@ Navigate below to get started with Policy Sentry!
    :caption: User Guide
 
    user-guide/installation
-   user-guide/command-cheat-sheet
    user-guide/initialize
    user-guide/write-policy
    user-guide/downloading-policies
    user-guide/analyze-policy
+   user-guide/command-cheat-sheet
 
 .. toctree::
    :maxdepth: 1
@@ -52,7 +52,7 @@ Navigate below to get started with Policy Sentry!
    :caption: Contributing
 
    contributing/contributing
-   contributing/developer-guide
+   contributing/internals
    contributing/roadmap
 
 .. toctree::

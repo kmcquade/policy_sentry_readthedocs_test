@@ -57,13 +57,74 @@ Developing Against HEAD
 -----------------------
 
 
+Pipenv
+~~~~~~
+
+.. code-block:: bash
+
+   pipenv --python 3.7  # create the environment
+   pipenv shell         # start the environment
+   pipenv install       # install both development and production dependencies
+
+
 Running the Test Suite
 ----------------------
+
+I use `Nose <https://nose.readthedocs.io/en/latest/>`_ for unit testing. All tests are placed in the ``tests`` folder.
+
+
+* Just run the following:
+
+.. code-block:: bash
+
+   nosetests -v
+
+Output:
+
+.. code-block:: text
+
+   Tests the format of the overrides yml file for the RAM service ... ok
+   Tests iam:CreateAccessKey (in overrides file as Permissions management, but in the AWS docs as Write) ... ok
+   test_get_actions_by_access_level (test_actions.ActionsTestCase) ... ok
+   test_get_dependent_actions_double (test_actions.ActionsTestCase) ... ok
+   test_get_dependent_actions_several (test_actions.ActionsTestCase) ... ok
+   test_get_dependent_actions_single (test_actions.ActionsTestCase) ... ok
+   test_add_s3_permissions_management_arn (test_arn_action_group.ArnActionGroupTestCase) ... ok
+   test_get_policy_elements (test_arn_action_group.ArnActionGroupTestCase) ... ok
+   test_update_actions_for_raw_arn_format (test_arn_action_group.ArnActionGroupTestCase) ... ok
+   test_does_arn_match_case_1 (test_arns.ArnsTestCase) ... ok
+   test_does_arn_match_case_2 (test_arns.ArnsTestCase) ... ok
+   test_does_arn_match_case_4 (test_arns.ArnsTestCase) ... ok
+   test_does_arn_match_case_5 (test_arns.ArnsTestCase) ... ok
+   test_does_arn_match_case_6 (test_arns.ArnsTestCase) ... ok
+   test_does_arn_match_case_bucket (test_arns.ArnsTestCase) ... ok
+   test_determine_actions_to_expand: provide expanded list of actions, like ecr:* ... ok
+   test_minimize_statement_actions (test_minimize_wildcard_actions.MinimizeWildcardActionsTestCase) ... ok
+   test_actions_template (test_template.TemplateTestCase) ... ok
+   test_crud_template (test_template.TemplateTestCase) ... ok
+   test_print_policy_with_actions_having_dependencies (test_write_policy.WritePolicyActionsTestCase) ... ok
+   test_write_policy (test_write_policy.WritePolicyCrudTestCase) ... ok
+   test_actions_missing_actions: write-policy actions if the actions block is missing ... ok
+   test_allow_missing_access_level_categories_in_cfg: write-policy --crud when the YAML file is missing access level categories ... ok
+   test_allow_empty_access_level_categories_in_cfg: If the content of a list is an empty string, it should sysexit ... ok
+   test_actions_missing_arn: write-policy actions command when YAML file block is missing an ARN ... ok
+   test_actions_missing_description: write-policy when the YAML file is missing a description ... ok
+   test_actions_missing_name: write-policy when the YAML file is missing a name? ... ok
+
 
 Contribution Guidelines
 =======================
 
 
-Internals
-=========
+Updating the AWS HTML files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Run the following:
+
+.. code-block:: bash
+
+   ./utils/grab-docs.sh
+   # Or:
+   ./utils/download-docs.sh
+
 
