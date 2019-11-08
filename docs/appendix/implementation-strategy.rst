@@ -7,13 +7,13 @@ In the context of your overall organization strategy for AWS IAM, we recommend u
 #. Use `policy_sentry <https://github.com/salesforce/policy_sentry/>`_ to create `Identity-based policies <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html>`_
 #. Use Service Control Policies (SCPs) to lock down available API calls per account.
 
-   * A great collection of SCPs can be found `here <https://asecure.cloud/l/scp/>`_.
+   * A great collection of SCPs can be found `on asecure.cloud <https://asecure.cloud/l/scp/>`_.
    * Control Tower has some excellent guidance on strategy for SCPs in their documentation. Note that they call it "Guardrails" but they are mostly SCPs. See the docs `here <https://docs.aws.amazon.com/controltower/latest/userguide/guardrails-reference.html>`_
 
 #. Use `Repokid <https://medium.com/netflix-techblog/introducing-aardvark-and-repokid-53b081bf3a7e>`_ to revoke out of date policies as your application/roles mature.
 #. Use `Resource-based policies <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html>`_ for all services that support them. 
 
-   * A list of which services support resource-based policies can be found `here <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html>`_.
+   * A list of which services support resource-based policies can be found `in the AWS documentation here <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html>`_.
 
 #. Never provision infrastructure manually; use Infrastructure as Code 
 

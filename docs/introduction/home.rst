@@ -34,42 +34,19 @@ Authoring Secure IAM Policies
 
 How do we accomplish this? Well, policy_sentry leverages the AWS documentation on `Actions, Resources, and Condition Keys <1>`_ documentation to look up the actions, access levels, and resource types, and generates policies according to the ARNs and access levels. Consider the table snippet below:
 
-
-.. raw:: html
-
-   <table class="tg">
-     <tr>
-       <th class="tg-fymr">Actions</th>
-       <th class="tg-fymr">Access Level</th>
-       <th class="tg-fymr">Resource Types</th>
-     </tr>
-     <tr>
-       <td class="tg-0pky">ssm:GetParameter</td>
-       <td class="tg-0pky">Read</td>
-       <td class="tg-0pky">parameter</td>
-     </tr>
-     <tr>
-       <td class="tg-0pky">ssm:DescribeParameters</td>
-       <td class="tg-0pky">List</td>
-       <td class="tg-0pky">parameter</td>
-     </tr>
-     <tr>
-       <td class="tg-0pky">ssm:PutParameter</td>
-       <td class="tg-0pky">Write</td>
-       <td class="tg-0pky">parameter</td>
-     </tr>
-     <tr>
-       <td class="tg-0pky">secretsmanager:PutResourcePolicy</td>
-       <td class="tg-0pky">Permissions management</td>
-       <td class="tg-0pky">secret</td>
-     </tr>
-     <tr>
-       <td class="tg-0pky">secretsmanager:TagResource</td>
-       <td class="tg-0pky">Tagging</td>
-       <td class="tg-0pky">secret</td>
-     </tr>
-   </table>
-
++----------------------------------+------------------------+--------------------+
+| **Actions**                      | **Access Level**       | **Resource Types** |
++----------------------------------+------------------------+--------------------+
+| ssm:GetParameter                 | Read                   | parameter          |
++----------------------------------+------------------------+--------------------+
+| ssm:DescribeParameters           | List                   | parameter          |
++----------------------------------+------------------------+--------------------+
+| ssm:PutParameter                 | Write                  | parameter          |
++----------------------------------+------------------------+--------------------+
+| secretsmanager:PutResourcePolicy | Permissions management | secret             |
++----------------------------------+------------------------+--------------------+
+| secretsmanager:TagResource       | Tagging                | secret             |
++----------------------------------+------------------------+--------------------+
 
 Policy Sentry aggregates all of that documentation into a single database and uses that database to generate policies according to actions, resources, and access levels. To generate a policy according to resources and access levels, start by creating a template with this command so you can just fill out the ARNs:
 

@@ -388,7 +388,7 @@ Writing Folders of IAM Policies
 
 **TODO: Write more about this, and point to the Terraform demo.**
 
-.. code-block::
+.. code-block:: text
 
    Usage: policy_sentry write-policy-dir [OPTIONS]
 

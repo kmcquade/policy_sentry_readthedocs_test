@@ -67,7 +67,7 @@ AWS Policy Generator is a great tool; it supports IAM policies, as well as multi
 
 **Missing actions**\ : To determine the list of actions, it relies on a file titled `policies.js <https://awspolicygen.s3.amazonaws.com/js/policies.js>`_\ , which contains a list of IAM Actions. However, this file is not as well maintained as the `Actions, Resources, and Condition Keys tables <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html>`_. For example, it does not have these actions:
 
-.. code-block::
+.. code-block:: text
 
    a4b:describe*
    appstream:get*

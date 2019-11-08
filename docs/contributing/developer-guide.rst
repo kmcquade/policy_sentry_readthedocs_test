@@ -145,7 +145,7 @@ Random
 
 * Code counting: Use `tokei <https://github.com/XAMPPRocky/tokei#how-to-use-tokei>`_
 
-.. code-block::
+.. code-block:: bash
 
    tokei ./* --exclude --exclude '**/*.html' --exclude '**/*.json'
 

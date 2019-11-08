@@ -6,7 +6,7 @@ Please download the demo code `here <https://github.com/salesforce/policy_sentry
 Command options
 ~~~~~~~~~~~~~~~
 
-.. code-block::
+.. code-block:: text
 
    Usage: policy_sentry write-policy-dir [OPTIONS]
 

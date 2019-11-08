@@ -1,7 +1,7 @@
 Downloading Policies
 ####################
 
-.. code-block::
+.. code-block:: text
 
    Usage: policy_sentry download-policies [OPTIONS]
 

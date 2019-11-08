@@ -19,7 +19,7 @@ You can solve this with policy_sentry too, by auditing for IAM actions in a give
 Options
 ^^^^^^^
 
-.. code-block::
+.. code-block:: text
 
    Usage: policy_sentry analyze-iam-policy [OPTIONS]
 
