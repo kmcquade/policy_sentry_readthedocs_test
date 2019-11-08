@@ -31,6 +31,7 @@ Navigate below to get started with Policy Sentry!
    user-guide/write-policy
    user-guide/downloading-policies
    user-guide/analyze-policy
+   user-guide/querying-the-database
    user-guide/command-cheat-sheet
 
 .. toctree::
@@ -61,11 +62,3 @@ Navigate below to get started with Policy Sentry!
 
    appendix/implementation-strategy
    appendix/policy_sentry-as-a-python-package
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

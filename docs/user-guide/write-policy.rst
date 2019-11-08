@@ -1,9 +1,9 @@
 Writing IAM Policies
-####################
+#####################
 
 
-Using ARNs and CRUD Levels
-----------------------------
+CRUD Mode: ARNs and Access Levels
+----------------------------------
 This is the flagship feature of this tool. You can just specify the CRUD levels (Read, Write, List, Tagging, or Permissions management) for each action in a
 YAML File. The policy will be generated for you. You might need to fiddle with the results for your use in Terraform, but it significantly reduces the level of effort to build least privilege into your policies.
 
@@ -26,34 +26,49 @@ Instructions
 ~~~~~~~~~~~~~~~
 
 
-* Create a YAML file with the following contents:
+* To generate a policy according to resources and access levels, start by creating a template with this command so you can just fill out the ARNs:
+
+.. code-block:: bash
+
+    policy_sentry create-template --name myRole --output-file crud.yml --template-type crud
+
+* It will generate a file like this:
 
 .. code-block:: yaml
 
-   roles_with_crud_levels:
-   - name: 'RoleNameWithCRUD'
-     description: 'Why I need these privs'
-     arn: 'arn:aws:iam::123456789012:role/RiskyEC2'
-     read:
-       - arn:aws:s3:::example-org-sbx-vmimport
-       - arn:aws:s3:::example-kinnaird
-       - arn:aws:ssm:us-east-1:123456789012:parameter/test
-       - arn:aws:ssm:us-east-1:123456789012:parameter/test2
-       - arn:aws:kms:us-east-1:123456789012:key/123456
-       - arn:aws:s3:::job/jobid
-       - arn:aws:s3:::example-org-sbx-vmimport/stuff
-     write:
-       - arn:aws:s3:::example-org-s3-access-logs
-       - arn:aws:s3:::example-org-sbx-vmimport/stuff
-       - arn:aws:secretsmanager:us-east-1:123456789012:secret:mysecret
-       - arn:aws:kms:us-east-1:123456789012:key/123456
-     list:
-       - arn:aws:s3:::example-org-flow-logs
-       - arn:aws:s3:::example-org-sbx-vmimport/stuff
-     tag:
-       - arn:aws:ssm:us-east-1:123456789012:parameter/test
-     permissions-management:
-       - arn:aws:s3:::example-org-s3-access-logs
+    roles_with_crud_levels:
+    - name: myRole
+      description: '' # Insert description
+      arn: '' # Insert the ARN of the role that will use this
+      read:
+        - '' # Insert ARNs for Read access
+      write:
+        - '' # Insert ARNs...
+      list:
+        - '' # Insert ARNs...
+      tag:
+        - '' # Insert ARNs...
+      permissions-management:
+        - '' # Insert ARNs...
+
+* Then just fill it out:
+
+.. code-block:: yaml
+
+    roles_with_crud_levels:
+    - name: myRole
+      description: 'Justification for privileges'
+      arn: 'arn:aws:iam::123456789102:role/myRole'
+      read:
+        - 'arn:aws:ssm:us-east-1:123456789012:parameter/myparameter'
+      write:
+        - 'arn:aws:ssm:us-east-1:123456789012:parameter/myparameter'
+      list:
+        - 'arn:aws:ssm:us-east-1:123456789012:parameter/myparameter'
+      tag:
+        - 'arn:aws:secretsmanager:us-east-1:123456789012:secret:mysecret'
+      permissions-management:
+        - 'arn:aws:secretsmanager:us-east-1:123456789012:secret:mysecret'
 
 
 * Run the command:
@@ -68,231 +83,64 @@ Instructions
 
 .. code-block:: json
 
-   {
-       "Version": "2012-10-17",
-       "Statement": [
-           {
-               "Sid": "S3ReadBucket",
-               "Effect": "Allow",
-               "Action": [
-                   "s3:getaccelerateconfiguration",
-                   "s3:getanalyticsconfiguration",
-                   "s3:getbucketacl",
-                   "s3:getbucketcors",
-                   "s3:getbucketlocation",
-                   "s3:getbucketlogging",
-                   "s3:getbucketnotification",
-                   "s3:getbucketpolicy",
-                   "s3:getbucketpolicystatus",
-                   "s3:getbucketpublicaccessblock",
-                   "s3:getbucketrequestpayment",
-                   "s3:getbuckettagging",
-                   "s3:getbucketversioning",
-                   "s3:getbucketwebsite",
-                   "s3:getencryptionconfiguration",
-                   "s3:getinventoryconfiguration",
-                   "s3:getlifecycleconfiguration",
-                   "s3:getmetricsconfiguration",
-                   "s3:getreplicationconfiguration",
-                   "s3:listbucketbytags",
-                   "s3:listbucketmultipartuploads",
-                   "s3:listbucketversions"
-               ],
-               "Resource": [
-                   "arn:aws:s3:::example-org-sbx-vmimport",
-                   "arn:aws:s3:::example-kinnaird"
-               ]
-           },
-           {
-               "Sid": "SsmReadParameter",
-               "Effect": "Allow",
-               "Action": [
-                   "ssm:getparameter",
-                   "ssm:getparameterhistory",
-                   "ssm:getparameters",
-                   "ssm:getparametersbypath",
-                   "ssm:listtagsforresource"
-               ],
-               "Resource": [
-                   "arn:aws:ssm:us-east-1:123456789012:parameter/test",
-                   "arn:aws:ssm:us-east-1:123456789012:parameter/test2"
-               ]
-           },
-           {
-               "Sid": "KmsReadKey",
-               "Effect": "Allow",
-               "Action": [
-                   "kms:describekey",
-                   "kms:getkeypolicy",
-                   "kms:getkeyrotationstatus",
-                   "kms:getparametersforimport",
-                   "kms:listresourcetags"
-               ],
-               "Resource": [
-                   "arn:aws:kms:us-east-1:123456789012:key/123456"
-               ]
-           },
-           {
-               "Sid": "S3ReadJob",
-               "Effect": "Allow",
-               "Action": [
-                   "s3:describejob"
-               ],
-               "Resource": [
-                   "arn:aws:s3:::job/jobid"
-               ]
-           },
-           {
-               "Sid": "S3ReadObject",
-               "Effect": "Allow",
-               "Action": [
-                   "s3:getobject",
-                   "s3:getobjectacl",
-                   "s3:getobjecttagging",
-                   "s3:getobjecttorrent",
-                   "s3:getobjectversion",
-                   "s3:getobjectversionacl",
-                   "s3:getobjectversionforreplication",
-                   "s3:getobjectversiontagging",
-                   "s3:getobjectversiontorrent",
-                   "s3:listmultipartuploadparts"
-               ],
-               "Resource": [
-                   "arn:aws:s3:::job/jobid",
-                   "arn:aws:s3:::example-org-sbx-vmimport/stuff"
-               ]
-           },
-           {
-               "Sid": "S3WriteBucket",
-               "Effect": "Allow",
-               "Action": [
-                   "s3:createbucket",
-                   "s3:deletebucket",
-                   "s3:deletebucketwebsite",
-                   "s3:getbucketobjectlockconfiguration",
-                   "s3:putaccelerateconfiguration",
-                   "s3:putanalyticsconfiguration",
-                   "s3:putbucketcors",
-                   "s3:putbucketlogging",
-                   "s3:putbucketnotification",
-                   "s3:putbucketobjectlockconfiguration",
-                   "s3:putbucketrequestpayment",
-                   "s3:putbucketversioning",
-                   "s3:putbucketwebsite",
-                   "s3:putencryptionconfiguration",
-                   "s3:putinventoryconfiguration",
-                   "s3:putlifecycleconfiguration",
-                   "s3:putmetricsconfiguration",
-                   "s3:putreplicationconfiguration"
-               ],
-               "Resource": [
-                   "arn:aws:s3:::example-org-s3-access-logs"
-               ]
-           },
-           {
-               "Sid": "S3WriteObject",
-               "Effect": "Allow",
-               "Action": [
-                   "s3:abortmultipartupload",
-                   "s3:deleteobject",
-                   "s3:deleteobjectversion",
-                   "s3:getobjectlegalhold",
-                   "s3:getobjectretention",
-                   "s3:putobject",
-                   "s3:putobjectlegalhold",
-                   "s3:putobjectretention",
-                   "s3:replicatedelete",
-                   "s3:replicateobject",
-                   "s3:restoreobject"
-               ],
-               "Resource": [
-                   "arn:aws:s3:::example-org-sbx-vmimport/stuff"
-               ]
-           },
-           {
-               "Sid": "SecretsmanagerWriteSecret",
-               "Effect": "Allow",
-               "Action": [
-                   "secretsmanager:cancelrotatesecret",
-                   "secretsmanager:deletesecret",
-                   "secretsmanager:putsecretvalue",
-                   "secretsmanager:restoresecret",
-                   "secretsmanager:rotatesecret",
-                   "secretsmanager:updatesecret",
-                   "secretsmanager:updatesecretversionstage"
-               ],
-               "Resource": [
-                   "arn:aws:secretsmanager:us-east-1:123456789012:secret:mysecret"
-               ]
-           },
-           {
-               "Sid": "KmsWriteKey",
-               "Effect": "Allow",
-               "Action": [
-                   "kms:cancelkeydeletion",
-                   "kms:createalias",
-                   "kms:decrypt",
-                   "kms:deletealias",
-                   "kms:deleteimportedkeymaterial",
-                   "kms:disablekey",
-                   "kms:disablekeyrotation",
-                   "kms:enablekey",
-                   "kms:enablekeyrotation",
-                   "kms:encrypt",
-                   "kms:generatedatakey",
-                   "kms:generatedatakeywithoutplaintext",
-                   "kms:importkeymaterial",
-                   "kms:reencryptfrom",
-                   "kms:reencryptto",
-                   "kms:schedulekeydeletion",
-                   "kms:updatealias",
-                   "kms:updatekeydescription"
-               ],
-               "Resource": [
-                   "arn:aws:kms:us-east-1:123456789012:key/123456"
-               ]
-           },
-           {
-               "Sid": "S3ListBucket",
-               "Effect": "Allow",
-               "Action": [
-                   "s3:listbucket"
-               ],
-               "Resource": [
-                   "arn:aws:s3:::example-org-flow-logs"
-               ]
-           },
-           {
-               "Sid": "S3PermissionsmanagementBucket",
-               "Effect": "Allow",
-               "Action": [
-                   "s3:deletebucketpolicy",
-                   "s3:putbucketacl",
-                   "s3:putbucketpolicy",
-                   "s3:putbucketpublicaccessblock"
-               ],
-               "Resource": [
-                   "arn:aws:s3:::example-org-s3-access-logs"
-               ]
-           },
-           {
-               "Sid": "SsmTaggingParameter",
-               "Effect": "Allow",
-               "Action": [
-                   "ssm:addtagstoresource",
-                   "ssm:putparameter",
-                   "ssm:removetagsfromresource"
-               ],
-               "Resource": [
-                   "arn:aws:ssm:us-east-1:123456789012:parameter/test"
-               ]
-           }
-       ]
-   }
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "SsmReadParameter",
+                "Effect": "Allow",
+                "Action": [
+                    "ssm:getparameter",
+                    "ssm:getparameterhistory",
+                    "ssm:getparameters",
+                    "ssm:getparametersbypath",
+                    "ssm:listtagsforresource"
+                ],
+                "Resource": [
+                    "arn:aws:ssm:us-east-1:123456789012:parameter/myparameter"
+                ]
+            },
+            {
+                "Sid": "SsmWriteParameter",
+                "Effect": "Allow",
+                "Action": [
+                    "ssm:deleteparameter",
+                    "ssm:deleteparameters",
+                    "ssm:putparameter",
+                    "ssm:labelparameterversion"
+                ],
+                "Resource": [
+                    "arn:aws:ssm:us-east-1:123456789012:parameter/myparameter"
+                ]
+            },
+            {
+                "Sid": "SecretsmanagerPermissionsmanagementSecret",
+                "Effect": "Allow",
+                "Action": [
+                    "secretsmanager:deleteresourcepolicy",
+                    "secretsmanager:putresourcepolicy"
+                ],
+                "Resource": [
+                    "arn:aws:secretsmanager:us-east-1:123456789012:secret:mysecret"
+                ]
+            },
+            {
+                "Sid": "SecretsmanagerTaggingSecret",
+                "Effect": "Allow",
+                "Action": [
+                    "secretsmanager:tagresource",
+                    "secretsmanager:untagresource"
+                ],
+                "Resource": [
+                    "arn:aws:secretsmanager:us-east-1:123456789012:secret:mysecret"
+                ]
+            }
+        ]
+    }
 
 
-Using Lists of IAM Actions
---------------------------
+Actions Mode: Lists of IAM Actions
+-----------------------------------
 Supply a list of actions in a YAML file and generate the policy accordingly.
 
 Command options
@@ -310,23 +158,39 @@ Example:
 Instructions
 ~~~~~~~~~~~~
 
+* If you already know the IAM actions, you can just run this command to create a template to fill out:
+
+.. code-block:: bash
+
+    policy_sentry create-template --name myRole --output-file tmp.yml --template-type actions
+
+* It will generate a file with contents like this:
+
+.. code-block:: yaml
+
+    roles_with_actions:
+    - name: myRole
+      description: '' # Insert value here
+      arn: '' # Insert value here
+      actions:
+      - ''  # Fill in your IAM actions here
 
 * Create a yaml file with the following contents:
 
 .. code-block:: yaml
 
-   roles_with_actions:
-   - name: 'RoleNameWithActions'
-     description: 'Why I need these privs'
-     arn: 'arn:aws:iam::123456789102:role/RiskyEC2'
-     actions:
-     - kms:CreateGrant
-     - kms:CreateCustomKeyStore
-     - ec2:AuthorizeSecurityGroupEgress
-     - ec2:AuthorizeSecurityGroupIngress
+    roles_with_actions:
+    - name: 'RoleNameWithActions'
+      description: 'Justification for privileges' # for auditability
+      arn: 'arn:aws:iam::123456789102:role/myRole' # for auditability
+      actions:
+        - kms:CreateGrant
+        - kms:CreateCustomKeyStore
+        - ec2:AuthorizeSecurityGroupEgress
+        - ec2:AuthorizeSecurityGroupIngress
 
 
-* Then run this in command line:
+* Then run this command:
 
 .. code-block:: bash
 
@@ -335,56 +199,50 @@ Instructions
 
 * The output will look like this:
 
-.. code-block:: text
+.. code-block:: json
 
 
-   =======
-   RoleNameWithActions
-   -------
-   {
-       "Version": "2012-10-17",
-       "Statement": [
-           {
-               "Sid": "LeastPriv0",
-               "Effect": "Allow",
-               "Action": [
-                   "kms:CreateCustomKeyStore",
-                   "ec2:DescribeInstances",
-                   "cloudhsm:DescribeClusters"
-               ],
-               "Resource": "*"
-           },
-           {
-               "Sid": "LeastPriv1",
-               "Effect": "Allow",
-               "Action": [
-                   "kms:CreateGrant"
-               ],
-               "Resource": "arn:aws:kms:${Region}:${Account}:key/${KeyId}"
-           }
-       ]
-   }
-   =======
-   SecondRoleNameWithActions
-   -------
-   {
-       "Version": "2012-10-17",
-       "Statement": [
-           {
-               "Sid": "LeastPriv0",
-               "Effect": "Allow",
-               "Action": [
-                   "ec2:AuthorizeSecurityGroupEgress",
-                   "ec2:AuthorizeSecurityGroupIngress"
-               ],
-               "Resource": "arn:aws:ec2:${Region}:${Account}:security-group/${SecurityGroupId}"
-           }
-       ]
-   }
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "KmsPermissionsmanagementKey",
+                "Effect": "Allow",
+                "Action": [
+                    "kms:creategrant"
+                ],
+                "Resource": [
+                    "arn:aws:kms:${Region}:${Account}:key/${KeyId}"
+                ]
+            },
+            {
+                "Sid": "Ec2WriteSecuritygroup",
+                "Effect": "Allow",
+                "Action": [
+                    "ec2:authorizesecuritygroupegress",
+                    "ec2:authorizesecuritygroupingress"
+                ],
+                "Resource": [
+                    "arn:aws:ec2:${Region}:${Account}:security-group/${SecurityGroupId}"
+                ]
+            },
+            {
+                "Sid": "MultMultNone",
+                "Effect": "Allow",
+                "Action": [
+                    "kms:createcustomkeystore",
+                    "cloudhsm:describeclusters"
+                ],
+                "Resource": [
+                    "*"
+                ]
+            }
+        ]
+    }
 
 
-Writing Folders of IAM Policies
-######################################
+Folder Mode: Write Multiple Policies from CRUD mode files
+----------------------------------------------------------
 
 **TODO: Write more about this, and point to the Terraform demo.**
 

@@ -1,8 +1,7 @@
-
-Using the Terraform modules
+Terraform Modules
 ---------------------------
 
-Step 0: Install policy_sentry
+1: Install policy_sentry
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -19,7 +18,7 @@ Step 0: Install policy_sentry
 
    policy_sentry initialize
 
-Step 1: Generate the policy_sentry YAML File
+2: Generate the policy_sentry YAML File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Create a file with the following in ``some-directory``\ :
@@ -43,7 +42,7 @@ Create a file with the following in ``some-directory``\ :
 
 Make sure you fill out the actual directory path properly. Note that ``yml_file_destination_path`` should point to the directory mentioned in Step 3.
 
-Step 2: Run policy_sentry and specify proper target directory
+3: Run policy_sentry and specify proper target directory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -57,7 +56,7 @@ Step 2: Run policy_sentry and specify proper target directory
 
    policy_sentry write-policy-dir --crud --input-dir files --output-dir files
 
-Step 3: Create the IAM Policies using JSON files from directory
+4: Create the IAM Policies using JSON files from directory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Then from ``other-directory``\ :
