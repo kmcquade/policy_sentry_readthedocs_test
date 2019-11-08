@@ -1,4 +1,3 @@
-
 Developer Guide
 ---------------
 
@@ -60,11 +59,7 @@ Subfolders
 Files
 ~~~~~
 
-..
-
-   TODO: Insert brief explanations of strategy for some of these later. It will just help people as they try to figure out this project.
-
-
+**TODO: Insert brief explanations of strategy for some of these later. It will just help people as they try to figure out this project.**
 
 * `actions.py <https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/actions.py>`_
 * `analyze.py <https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/analyze.py>`_
@@ -81,10 +76,12 @@ Files
 * `scrape.py <https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/scrape.py>`_
 * `template.py <https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/template.py>`_
 
+
 Development
 -----------
 
 Install dependencies using pipenv.
+
 
 Pipenv
 ~~~~~~

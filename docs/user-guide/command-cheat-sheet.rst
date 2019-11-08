@@ -55,7 +55,7 @@ Policy Writing Commands
 
 
 Policy Analysis Commands
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 .. code-block:: bash
 
    # Initialize the policy_sentry config folder and create the IAM database tables.
