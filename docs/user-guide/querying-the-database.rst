@@ -1,7 +1,7 @@
 Querying the Policy Database
 ----------------------------
 
-Policy Sentry relies on a SQLite database, generated at `initialize` time, which contains all of the services available through the `Actions, Resources, and Condition Keys documentation <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html>`_. The HTML files from that AWS documentation is scraped and stored in the SQLite database, which is then stored in ``$HOME/.policy_sentry/aws.sqlite3``.
+Policy Sentry relies on a SQLite database, generated at `initialize` time, which contains all of the services available through the `Actions, Resources, and Condition Keys documentation <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html>`__. The HTML files from that AWS documentation is scraped and stored in the SQLite database, which is then stored in ``$HOME/.policy_sentry/aws.sqlite3``.
 
 Policy Sentry supports querying that database through the CLI. This can help with writing policies and generally knowing what values to supply in your policies.
 

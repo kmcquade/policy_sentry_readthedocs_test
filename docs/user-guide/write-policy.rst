@@ -244,14 +244,13 @@ Instructions
 Folder Mode: Write Multiple Policies from CRUD mode files
 ----------------------------------------------------------
 
-**TODO: Write more about this, and point to the Terraform demo.**
+This command provides the same function as `write-policy`'s CRUD mode, but it can execute all the CRUD mode files in a folder. This is particularly useful in the Terraform use case, where the Terraform module can export a number of Policy Sentry template files into a folder, which can then be consumed using this command.
+
+See the Terraform demo for more details.
 
 .. code-block:: text
 
    Usage: policy_sentry write-policy-dir [OPTIONS]
-
-     write_policy, but this time with an input directory of YML/YAML files, and
-     an output directory for all the JSON files
 
    Options:
      --input-dir TEXT    Relative path to Input directory that contains policy_sentry .yml files (CRUD mode only)  [required]

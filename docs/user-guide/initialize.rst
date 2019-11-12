@@ -1,7 +1,7 @@
 Initialization
 ##############
 
-`initialize`: This will create a SQLite database that contains all of the services available through the [Actions, Resources, and Condition Keys documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html).
+`initialize`: This will create a SQLite database that contains all of the services available through the `Actions, Resources, and Condition Keys documentation <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html>`__.
 
 The database is stored in ``$HOME/.policy_sentry/aws.sqlite3``.
 
@@ -11,7 +11,7 @@ Options
 ^^^^^^^
 
 
-* ``--access-level-overrides-file`` (Optional): Path to your own custom access level overrides file, used to override the Access Levels per action provided by AWS docs. The default one is `here <https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/data/access-level-overrides.yml>`_.
+* ``--access-level-overrides-file`` (Optional): Path to your own custom access level overrides file, used to override the Access Levels per action provided by AWS docs. The default one is `here <https://github.com/salesforce/policy_sentry/blob/master/policy_sentry/shared/data/access-level-overrides.yml>`__.
 
 Usage
 ^^^^^

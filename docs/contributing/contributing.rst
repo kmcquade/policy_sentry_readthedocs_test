@@ -1,8 +1,6 @@
 Contributing
 ============
 
-Note: Borrowed this stuff from https://github.com/Netflix-Skunkworks/diffy/blob/master/docs/developer/index.rst. Make sure to reformat later.
-
 Want to contribute back to Policy Sentry? This page describes the general development
 flow, our philosophy, the test suite, and issue tracking.
 
@@ -133,11 +131,6 @@ Output:
    test_actions_missing_name: write-policy when the YAML file is missing a name? ... ok
 
 
-Contribution Guidelines
-=======================
-
-Fill this in later.
-
 Updating the AWS HTML files
 ----------------------------
 
@@ -149,4 +142,7 @@ Run the following:
    # Or:
    ./utils/download-docs.sh
 
+Contribution Guidelines
+=======================
 
+Fill this in later.

@@ -1,7 +1,7 @@
 Analyzing Policies
 ##################
 
-`analyze-iam-policy`: Reads a policy from a JSON file, expands the wildcards (like `s3:List*` if necessary, and audits them to see if certain IAM actions are permitted.
+``analyze-iam-policy``: Reads a policy from a JSON file, expands the wildcards (like ``s3:List*`` if necessary, and audits them to see if certain IAM actions are permitted.
 
 Motivation
 ^^^^^^^^^^
