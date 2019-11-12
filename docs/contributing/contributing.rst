@@ -56,6 +56,9 @@ Once you've got all that, the rest is simple:
 
     # Enter the docs directory and compile
     cd docs/
+    make html
+
+    # View the file titled docs/_build/html/index.html in your browser
 
 
 Building Documentation
