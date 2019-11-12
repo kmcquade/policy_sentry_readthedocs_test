@@ -1,9 +1,7 @@
 Overview
 =============
 
-policy_sentry is an IAM Least Privilege Policy Generator, auditor, and analysis database.
-
-Please note that the wiki documentation is a work in progress.
+Policy Sentry is an IAM Least Privilege Policy Generator, auditor, and analysis database.
 
 Motivation
 ----------
@@ -187,8 +185,8 @@ Usage
   ``write-policy``\ : Leverage a YAML file to write policies for you
 
 
-  * Option 1: Specify CRUD levels (Read, Write, List, Tagging, or Permissions management) and the ARN of the resource. It will write this for you. See the `documentation <https://github.com/salesforce/policy_sentry/wiki/Writing-IAM-Policies-with-Resource-ARNs-and-Access-Levels>`_
-  * Option 2: Specify a list of actions. It will write the IAM Policy for you, but you will have to fill in the ARNs. See the `documentation <https://github.com/salesforce/policy_sentry/wiki/Writing-IAM-Policies-with-a-List-of-Actions>`_.
+  * Option 1: Specify CRUD levels (Read, Write, List, Tagging, or Permissions management) and the ARN of the resource. It will write this for you. See the `documentation on CRUD mode <https://github.com/salesforce/policy_sentry/wiki/Writing-IAM-Policies-with-Resource-ARNs-and-Access-Levels>`_
+  * Option 2: Specify a list of actions. It will write the IAM Policy for you, but you will have to fill in the ARNs. See the `documentation on Action Mode <https://github.com/salesforce/policy_sentry/wiki/Writing-IAM-Policies-with-a-List-of-Actions>`_.
 
 *
   ``write-policy-dir``\ : This can be helpful in the Terraform use case. For more information, see the wiki.
@@ -200,7 +198,7 @@ Usage
   `analyze-iam-policy`: Analyze an IAM policy read from a JSON file, expands the wildcards (like `s3:List*` if necessary.
 
 
-  * Option 1: Audits them to see if certain IAM actions are permitted, based on actions in a separate text file. See the `documentation <https://github.com/salesforce/policy_sentry/wiki/Initializing-policy_sentry>`_.
+  * Option 1: Audits them to see if certain IAM actions are permitted, based on actions in a separate text file. See the `documentation on Initialization <https://github.com/salesforce/policy_sentry/wiki/Initializing-policy_sentry>`_.
   * Option 2: Audits them to see if any of the actions in the policy meet a certain access level, such as "Permissions management."
 
 
@@ -211,14 +209,14 @@ Author:
 
 * `Kinnaird McQuade <https://github.com/kmcquade>`_
 
-  * `Twitter <https://twitter.com/kmcquade3>`_
-  * `Keybase <https://keybase.io/kmcquade>`_
-  * `LinkedIn <https://www.linkedin.com/in/kinnairdmcquade/>`_
+  * `Twitter <https://twitter.com/kmcquade3>`__
+  * `Keybase <https://keybase.io/kmcquade>`__
+  * `LinkedIn <https://www.linkedin.com/in/kinnairdmcquade/>`__
 
 Contributors:
 
-* `Matt Jones <https://github.com/mattyjones>`_
+* `Matt Jones <https://github.com/mattyjones>`__
 
-  * `Twitter <https://twitter.com/CaffeinatedEng>`_
-  * `Keybase <https://keybase.io/urlugal>`_
-  * `LinkedIn <https://www.linkedin.com/in/mattyjones/>`_
+  * `Twitter <https://twitter.com/CaffeinatedEng>`__
+  * `Keybase <https://keybase.io/urlugal>`__
+  * `LinkedIn <https://www.linkedin.com/in/mattyjones/>`__

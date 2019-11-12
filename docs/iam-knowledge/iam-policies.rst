@@ -36,10 +36,11 @@ Actions, Resources, and Condition Keys Per Service
 
 ..
 
-   If you *ever* write or review IAM Policies, you should bookmark the documentation page for AWS Actions, Resources, and Context Keys `here <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html>`_
+   If you *ever* write or review IAM Policies, you should bookmark the documentation page for AWS Actions, Resources, and Context Keys `here <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html>`__
 
 
-This documentation is the seed source for the database that we create in policy_sentry. It contains tables for **(1) Actions**\ , **(2) Resources/ARNs**\ , and **(3) Condition Keys** for each service. This documentation is of critical importance because **every IAM action for every IAM service has different ARNs that it can apply to, and different Condition Keys that it can apply to. For example, if you consider
+This documentation is the seed source for the database that we create in policy_sentry. It contains tables for **(1) Actions**\ , **(2) Resources/ARNs**\ , and **(3) Condition Keys** for each service. This documentation is of critical importance because **every IAM action for every IAM service has different ARNs that it can apply to, and different Condition Keys that it can apply to.**\
+
 
 Action Table
 ^^^^^^^^^^^^
@@ -64,18 +65,18 @@ As you can see, the Actions Table contains these columns:
 * **Actions**\ : The name of the IAM Action
 * **Access Level**\ : how the action is classified. This is limited to List, Read, Write, Permissions management, or Tagging.
 
-  * This classification can help you understand the level of access that an action grants when you use it in a policy.
-  * For more information about access levels, see Understanding Access Level Summaries Within Policy Summaries.
+  - This classification can help you understand the level of access that an action grants when you use it in a policy.
+  - For more information about access levels, see `Understanding Access Level Summaries Within Policy Summaries <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_understand-policy-summary-access-level-summaries.html>`__.
 
 * **Condition Keys**\ : The condition key available for that action. There are some service specific ones that will contain the service namespace (i.e., ``ec2``\ , or in this case, ``kms``. Sometimes, there are AWS-level condition keys that are available to only some actions within some services, such as `aws:SourceAccount <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceaccount>`_. If those are available to the action, they will be supplied in that column.
 * **Dependent Actions**\ : Some actions require that other actions can be executed by the IAM Principal. The example above indicates that in order to call ``kms:CreateCustomKeyStore``\ , you must be able to also execute ``cloudhsm:DescribeClusters``\ .
 
 **And most importantly** to the context of this tool, there is the Resource Types column:
 
-* **Resource Types**\ : This indicates whether the action supports resource-level permissions - i.e., **\ **\ *restricting IAM Actions by ARN*\ **\ **. If there is a value here, it points to the ARN Table shown later in the documentation. 
+* **Resource Types**\ : This indicates whether the action supports resource-level permissions - i.e., *restricting IAM Actions by ARN*. If there is a value here, it points to the ARN Table shown later in the documentation.
 
-  * In the example above, you can see that ``kms:CreateCustomKeyStore``\ 's Resource Types cell is blank; this indicates that ``kms:CreateCustomKeyStore`` can **only** have ``*`` as the resource type.
-  * Conversely, for ``kms:CreateGrant``\ , the action can have either (1) ``*`` as the resource type, or ``key*`` as the resource type. The ARN format is not actually ``key*``\ , it just points to that ARN format in the ARN Table explained below. 
+  - In the example above, you can see that ``kms:CreateCustomKeyStore``\ 's Resource Types cell is blank; this indicates that ``kms:CreateCustomKeyStore`` can **only** have ``*`` as the resource type.
+  - Conversely, for ``kms:CreateGrant``\ , the action can have either (1) ``*`` as the resource type, or ``key*`` as the resource type. The ARN format is not actually ``key*``\ , it just points to that ARN format in the ARN Table explained below.
 
 ARN Table
 ^^^^^^^^^
@@ -94,13 +95,13 @@ The ARN Table has three fields:
 
 *  **Resource Types**\ : The name of the resource type. This corresponds to the "Resource Types" field in the Action table. In the example above, the types are:
 
-  * ``alias``
-  * ``key``
+  - ``alias``
+  - ``key``
 
 *  **ARN**\ : This shows the required ARN format that can be specified in IAM policies for the IAM Actions that allow this ARN format. In the example above the ARN types are:
 
-  * ``arn:${Partition}:kms:${Region}:${Account}:alias/${Alias}``
-  * ``arn:${Partition}:kms:${Region}:${Account}:key/${KeyId}``
+  - ``arn:${Partition}:kms:${Region}:${Account}:alias/${Alias}``
+  - ``arn:${Partition}:kms:${Region}:${Account}:key/${KeyId}``
 
 *  **Condition Keys**\ : This specifies condition context keys that you can include in an IAM policy statement only when both (1) this resource and (2) a supporting action from the table above are included in the statement.
 

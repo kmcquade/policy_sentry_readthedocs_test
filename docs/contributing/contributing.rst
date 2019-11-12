@@ -39,6 +39,26 @@ that includes giving feedback about the contribution guidelines.)
 Documentation
 -------------
 
+If you're looking to help document Policy Sentry, your first step is to get set up with Sphinx, our documentation tool. First you will want to make sure you have a few things on your local system:
+
+* python-dev (if you're on OS X, you already have this)
+* pip
+* pipenv
+
+Once you've got all that, the rest is simple:
+
+::
+
+    # If you have a fork, you'll want to clone it instead
+    git clone git@github.com:salesforce/policy_sentry.git
+
+    # Set up the Pipenv
+    pipenv install --skip-lock
+    pipenv shell
+
+    # Enter the docs directory and compile
+    cd docs/
+
 
 Building Documentation
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -51,6 +71,7 @@ See ``make help`` for available options and the `Sphinx Documentation
 Coding Standards
 ----------------
 
+* Use `Python Black <https://black.readthedocs.io/en/stable/>`__ to adhere to pep8 automagically.
 
 
 Developing Against HEAD
@@ -115,9 +136,10 @@ Output:
 Contribution Guidelines
 =======================
 
+Fill this in later.
 
 Updating the AWS HTML files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 
 Run the following:
 
